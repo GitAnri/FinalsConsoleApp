@@ -41,7 +41,7 @@ namespace FinalsConsoleApp
                             Environment.Exit(0);
                             break;
                         default:
-                            Console.WriteLine("Invalid choice. Please try again.");
+                            Console.WriteLine("There is no such action, use numbers 1 | 2 | 3 to choose action.");
                             break;
                     }
                 }
@@ -80,7 +80,7 @@ namespace FinalsConsoleApp
 
                 users.Add(newUser);
                 Console.WriteLine("");
-                Console.WriteLine("User registered successfully!");
+                Console.WriteLine("Registration completed successfully!");
 
                 
                 LogOperation($"User named {name} {lastName} registered on: {DateTime.Now}");
@@ -135,7 +135,7 @@ namespace FinalsConsoleApp
                             case 5:
                                 return;
                             default:
-                                Console.WriteLine("Invalid choice. Please try again.");
+                                Console.WriteLine("No such action. Use numbers 1 | 2 | 3 | 4 | 5.");
                                 break;
                         }
                     }
@@ -162,7 +162,7 @@ namespace FinalsConsoleApp
             }
             else
             {
-                Console.WriteLine("Invalid amount. Please enter a positive number.");
+                Console.WriteLine("Invalid amount. Can't deposit a negative amount.");
             }
         }
 
@@ -177,7 +177,7 @@ namespace FinalsConsoleApp
             }
             else if (amount <= 0)
             {
-                Console.WriteLine("Invalid amount. Please enter a positive number.");
+                Console.WriteLine("Invalid amount. Can't withdraw a negative amount.");
             }
             else
             {
