@@ -63,11 +63,10 @@ namespace FinalsConsoleApp
             Console.Write("Enter your personal number: ");
             string personalNumber = Console.ReadLine();
 
-            string password = rndpass.Next(1000, 9999).ToString();
-            Console.Write("Your password will be: " + password);
-
             if (IsPersonalNumberUnique(personalNumber))
             {
+                string password = rndpass.Next(1000, 9999).ToString();
+                Console.Write("Your password will be: " + password);
                 AtmUser newUser = new AtmUser
                 {
                     Id = users.Count + 1,

@@ -12,10 +12,11 @@ namespace FinalsConsoleApp
     {
         static void Main(string[] args)
         {
-            // CalculatorLoop();
-            // GuesserLoop();
-            // Hangman();
-             ATMSimulator();
+            //  CalculatorLoop();
+            //  GuesserLoop();
+            //  Hangman();
+              ATM atm = new ATM();
+              atm.AtmMenu();
         }
 
         #region HangmanFunctions
@@ -87,8 +88,9 @@ namespace FinalsConsoleApp
                             letterFound = true;
                             if (!rightAnswerDisplayed)
                             {
-                                Console.WriteLine("Right answer! Tries left: " + (i - 1));
+                                Console.WriteLine("Right answer! Tries left: " + (i));
                                 rightAnswerDisplayed = true;
+                                i++;
                             }
                             blankAns[j] = hangmanAns[j].ToString();
                         }
@@ -114,20 +116,26 @@ namespace FinalsConsoleApp
         }
         #endregion HangmanFunctions
         #region numGuesserFunctions
-        static void Hinter(int input, int ans)
+
+        static int ModeSelector()
         {
-            if (input < ans)
+            Random random = new Random();
+            int ans = 0;
+            Console.WriteLine("Please choose the difficulty mode: ");
+            string mode = Console.ReadLine();
+            if (mode == "Easy")
             {
-                Console.WriteLine("Higher!");
+                ans = random.Next(1, 25);
             }
-            else if (input > ans)
+            else if (mode == "Medium")
             {
-                Console.WriteLine("Lower!");
+                ans = random.Next(1, 50);
             }
-            else
+            else if (mode == "Hard")
             {
-                Console.WriteLine("Your guess is right! Great job");
+                ans = random.Next(1, 100);
             }
+            return ans;
         }
 
         static void GuesserLoop()
@@ -152,26 +160,22 @@ namespace FinalsConsoleApp
             }
         }
 
-        static int ModeSelector()
+        static void Hinter(int input, int ans)
         {
-            Random random = new Random();
-            int ans = 0;
-            Console.WriteLine("Please choose the difficulty mode: ");
-            string mode = Console.ReadLine();
-            if (mode == "Easy")
+            if (input < ans)
             {
-                ans = random.Next(1, 25);
+                Console.WriteLine("Higher!");
             }
-            else if (mode == "Medium")
+            else if (input > ans)
             {
-                ans = random.Next(1, 50);
+                Console.WriteLine("Lower!");
             }
-            else if (mode == "Hard")
+            else
             {
-                ans = random.Next(1, 100);
+                Console.WriteLine("Your guess is right! Great job");
             }
-            return ans;
         }
+
         #endregion numGuesserFunctions
         #region calcfunctions
         static void CalculatorLoop()
@@ -181,7 +185,7 @@ namespace FinalsConsoleApp
 
             while (true)
             {
-                Console.WriteLine("Enter the numbers, then an operator: ");
+                Console.WriteLine("Enter the numbers, then an operator(+ | - | * | / : ");
                 if (int.TryParse(Console.ReadLine(), out x) && int.TryParse(Console.ReadLine(), out y))
                 {
                     myOperator = Console.ReadLine();
@@ -231,12 +235,6 @@ namespace FinalsConsoleApp
 
         }
         #endregion calcfunctions
-        #region ATM
-        static void ATMSimulator() {
-            ATM atm = new ATM();
-            atm.AtmMenu();
-        }
-        #endregion ATM
     }
 }
        
